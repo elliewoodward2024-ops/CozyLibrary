@@ -1,0 +1,1251 @@
+<!doctype html>
+<html lang="en"><head>
+<title>Ellie's Scenario Nest - Google Drive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#2A1F2F; --bg2:#1E1722; --card:#372B3F; --muted:#bca5c9;
+  --accent:#9C6DC2; --accent-2:#C47DA3; --text:#EAE4F2; --radius:16px;
+  --shadow:0 6px 20px rgba(0,0,0,0.6); --transition:0.3s ease;
+}
+
+/* Dark Theme Variables */
+[data-theme="purple"] {
+  --bg:#2A1F2F; --bg2:#1E1722; --card:#372B3F; --muted:#bca5c9;
+  --accent:#9C6DC2; --accent-2:#C47DA3; --text:#EAE4F2;
+}
+
+[data-theme="ocean"] {
+  --bg:#1a2332; --bg2:#0f1419; --card:#2d3748; --muted:#a0aec0;
+  --accent:#4299e1; --accent-2:#63b3ed; --text:#e2e8f0;
+}
+
+[data-theme="sunset"] {
+  --bg:#2d1b25; --bg2:#1a0f16; --card:#3d2b35; --muted:#d69e2e;
+  --accent:#ed8936; --accent-2:#f56565; --text:#fff5f5;
+}
+
+[data-theme="forest"] {
+  --bg:#1a2e1a; --bg2:#0f1b0f; --card:#2d4a2d; --muted:#9ae6b4;
+  --accent:#48bb78; --accent-2:#68d391; --text:#f0fff4;
+}
+
+[data-theme="dusty"] {
+  --bg:#2c2622; --bg2:#1a1714; --card:#3e3530; --muted:#d6bcaa;
+  --accent:#b7956d; --accent-2:#d4af8c; --text:#f7f1e8;
+}
+
+[data-theme="midnight"] {
+  --bg:#0f0f23; --bg2:#050517; --card:#1a1a2e; --muted:#a5a5d6;
+  --accent:#6c5ce7; --accent-2:#a29bfe; --text:#ddd6fe;
+}
+
+[data-theme="rose"] {
+  --bg:#2b1b28; --bg2:#1d1220; --card:#3d2b38; --muted:#e6a8c2;
+  --accent:#d63384; --accent-2:#f093aa; --text:#fdeef4;
+}
+
+/* Light Theme Variables */
+[data-theme="light-lavender"] {
+  --bg:#f8f6ff; --bg2:#f0ecff; --card:#ffffff; --muted:#8b7aa8;
+  --accent:#8b5cf6; --accent-2:#a78bfa; --text:#4c1d95;
+  --shadow:0 6px 20px rgba(139, 92, 246, 0.15);
+}
+
+[data-theme="light-ocean"] {
+  --bg:#f0f9ff; --bg2:#e0f2fe; --card:#ffffff; --muted:#0284c7;
+  --accent:#0ea5e9; --accent-2:#38bdf8; --text:#0c4a6e;
+  --shadow:0 6px 20px rgba(14, 165, 233, 0.15);
+}
+
+[data-theme="light-sunset"] {
+  --bg:#fff7ed; --bg2:#ffedd5; --card:#ffffff; --muted:#ea580c;
+  --accent:#f97316; --accent-2:#fb923c; --text:#9a3412;
+  --shadow:0 6px 20px rgba(249, 115, 22, 0.15);
+}
+
+[data-theme="light-forest"] {
+  --bg:#f0fdf4; --bg2:#dcfce7; --card:#ffffff; --muted:#16a34a;
+  --accent:#22c55e; --accent-2:#4ade80; --text:#15803d;
+  --shadow:0 6px 20px rgba(34, 197, 94, 0.15);
+}
+
+[data-theme="light-rose"] {
+  --bg:#fff1f2; --bg2:#ffe4e6; --card:#ffffff; --muted:#e11d48;
+  --accent:#f43f5e; --accent-2:#fb7185; --text:#be123c;
+  --shadow:0 6px 20px rgba(244, 63, 94, 0.15);
+}
+
+[data-theme="light-cream"] {
+  --bg:#fefce8; --bg2:#fef3c7; --card:#ffffff; --muted:#a16207;
+  --accent:#d97706; --accent-2:#f59e0b; --text:#92400e;
+  --shadow:0 6px 20px rgba(217, 119, 6, 0.15);
+}
+
+[data-theme="light-minimal"] {
+  --bg:#fafafa; --bg2:#f4f4f5; --card:#ffffff; --muted:#71717a;
+  --accent:#18181b; --accent-2:#52525b; --text:#09090b;
+  --shadow:0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+*{box-sizing:border-box;transition:background var(--transition),color var(--transition);}
+html,body{height:100%;margin:0;font-family:'Poppins',system-ui,Arial;
+  background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);
+  color:var(--text);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;padding:28px;}
+.container{max-width:1200px;margin:0 auto}
+header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.brand{display:flex;gap:14px;align-items:center}
+.logo{width:64px;height:64px;border-radius:14px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+  display:flex;align-items:center;justify-content:center;font-family:'Playfair Display';font-size:22px;color:#fff;box-shadow:var(--shadow)}
+h1{margin:0;font-family:'Playfair Display';font-size:22px}
+.sub{font-size:12px;color:var(--muted)}
+.quote{font-size:14px;color:var(--accent); font-style:italic; margin-top:4px; font-weight: 500;}
+.controls{display:flex;gap:10px;align-items:center}
+.btn{background:var(--card);border:1px solid rgba(255,255,255,0.3);padding:10px 14px;border-radius:12px;cursor:pointer;box-shadow:var(--shadow);font-weight:600;color:var(--text);transition:var(--transition)}
+.btn:hover{opacity:0.9}
+.btn:disabled{opacity:0.5;cursor:not-allowed}
+.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;color:#fff}
+.layout{display:grid;grid-template-columns:260px 1fr;gap:18px;height:calc(100vh - 140px);}
+aside{background:var(--card);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);position:sticky;top:0;align-self:start;height:fit-content;max-height:calc(100vh - 140px);overflow-y:auto;}
+.search{display:flex;gap:8px;margin-bottom:12px}
+input[type=text]{flex:1;padding:10px;border-radius:10px;border:1px solid rgba(0,0,0,0.1);background:transparent;color:var(--text)}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{padding:6px 8px;border-radius:999px;font-size:13px;background:var(--bg2);cursor:pointer;transition:0.2s;color:var(--text);border:1px solid rgba(255,255,255,0.2);}
+.tag.active{background:var(--accent);color:#fff;transform:translateY(2px);}
+main {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 140px);
+  overflow: hidden;
+}
+.grid-container {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 8px;
+  margin-right: -8px;
+}
+.grid-container::-webkit-scrollbar {
+  width: 8px;
+}
+.grid-container::-webkit-scrollbar-track {
+  background: var(--bg2);
+  border-radius: 4px;
+}
+.grid-container::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+}
+.grid-container::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-2);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 14px;
+  padding-bottom: 20px;
+}
+.card{background:var(--card);border-radius:14px;padding:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:8px}
+.meta{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted)}
+.title{font-weight:600;font-family:'Playfair Display'}
+.excerpt{font-size:13px;color:var(--muted);height:48px;overflow:hidden}
+footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px;flex-shrink:0;}
+
+/* Auth status and save status */
+.auth-status, .save-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: var(--bg2);
+}
+.auth-status.signed-in {
+  color: #4ade80;
+}
+.auth-status.signed-out {
+  color: #f87171;
+}
+.save-status.saving {
+  color: var(--accent);
+}
+.save-status.saved {
+  color: #4ade80;
+}
+.save-status.error {
+  color: #f87171;
+}
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.modal-bg{position:fixed;inset:0;background:rgba(18,10,24,0.6);display:none;align-items:center;justify-content:center;padding:24px;z-index:40}
+.modal{width:90%;max-width:900px;background:var(--card);border-radius:16px;padding:18px;box-shadow:0 30px 80px rgba(20,10,30,0.6);max-height:90vh;overflow:auto}
+.modal h2{margin-top:0;font-family:'Playfair Display'}
+.modal input,.modal textarea{width:100%;padding:8px;margin-top:4px;margin-bottom:8px;border-radius:8px;border:1px solid rgba(0,0,0,0.2);background:transparent;color:var(--text);}
+.modal textarea{resize:vertical;font-family:'Poppins';min-height:200px}
+.modal .modal-buttons{display:flex;gap:8px;justify-content:flex-end;margin-top:10px;flex-wrap:wrap;}
+.modal .delete-btn{background:#e74c3c;color:#fff;border:none;}
+.reading-bg{position:fixed;inset:0;background:linear-gradient(160deg,var(--bg),var(--bg2));display:none;flex-direction:column;align-items:center;justify-content:center;padding:40px;z-index:100;overflow:hidden}
+.reading-box{max-width:900px;width:100%;color:var(--text);font-size:16px;line-height:1.8;font-family:'Playfair Display';columns:2;column-gap:2rem;overflow:hidden;text-align:justify;height:calc(100vh - 200px);}
+.reading-controls{position:fixed;top:20px;right:20px;display:flex;gap:10px}
+.arrow{position:fixed;top:50%;transform:translateY(-50%);font-size:32px;cursor:pointer;color:var(--accent-2)}
+.arrow.left{left:20px}
+.arrow.right{right:20px}
+.page-counter{position:fixed;bottom:20px;right:50%;transform:translateX(50%);font-size:14px;color:var(--muted)}
+
+/* Theme Selector Styles */
+.theme-card {
+  background: var(--card);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 2px solid transparent;
+  font-size: 13px;
+}
+.theme-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+.theme-card.active {
+  border-color: var(--accent);
+}
+.theme-preview {
+  width: 100%;
+  height: 50px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+/* Light theme adjustments for buttons */
+[data-theme*="light"] .btn {
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+[data-theme*="light"] .tag {
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+[data-theme*="light"] .modal-bg {
+  background: rgba(0,0,0,0.4);
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  color: white;
+  font-size: 18px;
+}
+
+/* Setup modal */
+.setup-info {
+  background: var(--bg2);
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.setup-info h3 {
+  margin-top: 0;
+  color: var(--accent);
+}
+
+.setup-info ol {
+  margin: 8px 0;
+}
+
+@media(max-width:880px){
+  .layout{grid-template-columns:1fr; height: auto;}
+  .logo{display:none}
+  .controls{flex-wrap:wrap}
+  aside{position:relative; max-height: none;}
+  main{height: auto;}
+  .grid-container{height: auto; overflow-y: visible;}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="brand">
+      <div class="logo">E</div>
+      <div>
+        <h1>⋆˙⟡ Ellie's Scenario Nest ⋆˙⟡</h1>
+        <div class="sub">Your cozy library <3</div>
+        <div class="quote" id="quoteOfDay"></div>
+      </div>
+    </div>
+    <div class="controls">
+      <div class="auth-status" id="authStatus">
+        <div class="status-dot"></div>
+        <span id="authText">Not signed in</span>
+      </div>
+      <div class="save-status" id="saveStatus">
+        <div class="status-dot"></div>
+        <span id="saveText">Ready</span>
+      </div>
+      <button class="btn" id="authBtn">Sign In</button>
+      <button class="btn" id="themeBtn">Themes</button>
+      <button class="btn" id="setupBtn">Setup</button>
+      <button class="btn" id="exportBtn" disabled>Export</button>
+      <button class="btn" id="importBtn">Import</button>
+      <button class="btn primary" id="newBtn" disabled>New Scenario</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <div class="search">
+        <input id="searchInput" type="text" placeholder="Search..." disabled/>
+        <button class="btn" id="clearSearch" disabled>Clear</button>
+      </div>
+      <div style="margin-bottom:10px">
+        <div style="font-size:13px;color:var(--muted);margin-bottom:6px">Filter by tag</div>
+        <div class="tags" id="tagList"></div>
+      </div>
+      <div style="margin-top:10px">
+        <div style="font-size:13px;color:var(--muted);margin-bottom:6px">Sort</div>
+        <select id="sortSel" class="btn" disabled>
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+          <option value="word_high">Word count (high)</option>
+          <option value="word_low">Word count (low)</option>
+        </select>
+      </div>
+    </aside>
+
+    <main>
+      <div class="grid-container">
+        <div id="grid" class="grid"></div>
+      </div>
+      <footer>
+        . ݁₊ ⊹ . ݁ ⟡ ݁ .⊹ ₊ ݁ Rain, Coffee, and Books. . ݁₊ ⊹ . ݁ ⟡ ݁ .⊹
+        <div style="margin-top: 8px; font-size: 11px;">
+          ☁️ Your stories are automatically backed up to Google Drive ☁️
+        </div>
+      </footer>
+    </main>
+  </div>
+</div>
+
+<!-- Loading overlay -->
+<div class="loading-overlay" id="loadingOverlay">
+  <div>Loading your scenarios...</div>
+</div>
+
+<!-- Setup Modal -->
+<div class="modal-bg" id="setupBg">
+  <div class="modal" style="max-width:700px;">
+    <h2>🔧 Google Drive Setup</h2>
+    <div class="setup-info">
+      <h3>To connect to Google Drive:</h3>
+      <ol>
+        <li>Go to the <a href="https://console.cloud.google.com/" target="_blank" style="color: var(--accent);">Google Cloud Console</a></li>
+        <li>Create a new project or select an existing one</li>
+        <li>Enable the "Google Drive API" for your project</li>
+        <li>Go to "Credentials" and create a new "API Key"</li>
+        <li>Also create "OAuth 2.0 Client IDs" for web application</li>
+        <li>Add your domain (or localhost:3000 for testing) to authorized origins</li>
+        <li>Copy your Client ID and API Key below</li>
+      </ol>
+      <p><strong>Note:</strong> This setup is required once. Your credentials will be saved locally.</p>
+    </div>
+    
+    <label>Google API Key</label>
+    <input id="setupApiKey" placeholder="Your Google API Key" type="password"/>
+    
+    <label>Google Client ID</label>
+    <input id="setupClientId" placeholder="Your Google OAuth Client ID"/>
+    
+    <div class="modal-buttons">
+      <button class="btn primary" id="saveSetup">Save & Connect</button>
+      <button class="btn" id="closeSetup">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Theme Selector Modal -->
+<div class="modal-bg" id="themeBg">
+  <div class="modal" style="max-width:800px;">
+    <h2>✨ Choose Your Vibe ✨</h2>
+    <div style="margin-bottom: 20px;">
+      <h3 style="color: var(--accent); margin-bottom: 10px; font-size: 16px;">Dark Themes</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;">
+        <div class="theme-card" data-theme="purple">
+          <div class="theme-preview" style="background:linear-gradient(135deg,#9C6DC2,#C47DA3)"></div>
+          <div>Purple Dream</div>
+        </div>
+        <div class="theme-card" data-theme="ocean">
+          <div class="theme-preview" style="background:linear-gradient(135deg,#4299e1,#63b3ed)"></div>
+          <div>Ocean Blues</div>
+        </div>
+        <div class="theme-card" data-theme="sunset">
+          <div class="theme-preview" style="background:linear-gradient(135deg,#ed8936,#f56565)"></div>
+          <div>Sunset Glow</div>
+        </div>
+        <div class="theme-card" data-theme="forest">
+          <div class="theme-preview" style="background:linear-gradient(135deg,#48bb78,#68d391)"></div>
+          <div>Forest Whisper</div>
+        </div>
+        <div class="theme-card" data-theme="dusty">
+          <div class="theme-preview" style="background:linear-gradient(135deg,#b7956d,#d4af8c)"></div>
+          <div>Dusty Rose</div>
+        </div>
+        <div class="theme-card" data-theme="midnight">
+          <div class="theme-preview" style="background:linear-gradient(135deg,#6c5ce7,#a29bfe)"></div>
+          <div>Midnight Magic</div>
+        </div>
+        <div class="theme-card" data-theme="rose">
+          <div class="theme-preview" style="background:linear-gradient(135deg,#d63384,#f093aa)"></div>
+          <div>Rose Garden</div>
+        </div>
+      </div>
+    </div>
+    
+    <div>
+      <h3 style="color: var(--accent); margin-bottom: 10px; font-size: 16px;">Light Themes</h3>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;">
+        <div class="theme-card" data-theme="light-lavender">
+          <div class="theme-preview" style="background:linear-gradient(135deg,#8b5cf6,#a78bfa)"></div>
+          <div>Light Lavender</div>
+        </div>
+        <div class="theme-card" data-theme="light-ocean">
+          <div class="theme-preview" style="background:linear-gradient(135deg,#0ea5e9,#38bdf8)"></div>
+          <div>Light Ocean</div>
+        </div>
+        <div class="theme-card" data-theme="light-sunset">
+          <div class="theme-preview" style="background:linear-gradient(135deg,#f97316,#fb923c)"></div>
+          <div>Light Sunset</div>
+        </div>
+        <div class="theme-card" data-theme="light-forest">
+          <div class="theme-preview" style="background:linear-gradient(135deg,#22c55e,#4ade80)"></div>
+          <div>Light Forest</div>
+        </div>
+        <div class="theme-card" data-theme="light-rose">
+          <div class="theme-preview" style="background:linear-gradient(135deg,#f43f5e,#fb7185)"></div>
+          <div>Light Rose</div>
+        </div>
+        <div class="theme-card" data-theme="light-cream">
+          <div class="theme-preview" style="background:linear-gradient(135deg,#d97706,#f59e0b)"></div>
+          <div>Light Cream</div>
+        </div>
+        <div class="theme-card" data-theme="light-minimal">
+          <div class="theme-preview" style="background:linear-gradient(135deg,#18181b,#52525b)"></div>
+          <div>Light Minimal</div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="modal-buttons">
+      <button class="btn" id="closeTheme">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal / Editor -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <h2 id="modalTitle"></h2>
+    <div class="meta" id="modalMeta"></div>
+    <label>Title</label><input id="editTitle"/>
+    <label>POV / Character</label><input id="editPOV"/>
+    <label>Tags (comma separated)</label><input id="editTags"/>
+    <label>Content (use ENTER for paragraphs)</label>
+    <textarea id="editContent"></textarea>
+    <div>Word count: <span id="wordCount">0</span></div>
+    <div class="modal-buttons">
+      <button class="btn primary" id="saveBtn">Save</button>
+      <button class="btn" id="readBtn">Read Mode</button>
+      <button class="btn delete-btn" id="deleteBtn">Delete</button>
+      <button class="btn" id="closeModal">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Reading Mode -->
+<div class="reading-bg" id="readingBg">
+  <div class="reading-controls">
+    <button class="btn" id="exitReading">Back</button>
+  </div>
+  <div class="arrow left" id="prevArrow">❮</div>
+  <div class="arrow right" id="nextArrow">❯</div>
+  <div class="reading-box" id="readingBox"></div>
+  <div class="page-counter" id="pageCounter"></div>
+</div>
+
+<input type="file" id="importFile" accept="application/json" style="display:none"/>
+
+<!-- Google APIs -->
+<script async defer src="https://apis.google.com/js/api.js"></script>
+<script async defer src="https://accounts.google.com/gsi/client"></script>
+
+
+<script>
+const STORAGE_KEY = 'ellie_scenarios_gdrive';
+const THEME_KEY = 'ellie_theme';
+const CREDENTIALS_KEY = 'ellie_gdrive_credentials';
+const FILE_NAME = 'ellie_scenarios.json';
+const qs = s => document.querySelector(s);
+
+let scenarios = [];
+let activeTags = [], currentScenario = null, readingPages = [], currentPage = 0;
+let saveTimeout = null;
+let isAuthenticated = false;
+let gdriveFileId = null;
+
+// Google Drive API Configuration
+let GOOGLE_API_KEY = '';
+let GOOGLE_CLIENT_ID = '';
+let DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest';
+let SCOPES = 'https://www.googleapis.com/auth/drive.file';
+
+// Google Drive Manager
+class GoogleDriveManager {
+  constructor() {
+    this.initialized = false;
+    this.tokenClient = null;
+  }
+
+  async initialize() {
+    try {
+      // Load credentials
+      const credentials = JSON.parse(localStorage.getItem(CREDENTIALS_KEY) || '{}');
+      if (!credentials.apiKey || !credentials.clientId) {
+        this.updateAuthStatus('signed-out', 'Setup required');
+        this.updateSaveStatus('error', 'Setup required');
+        return false;
+      }
+
+      GOOGLE_API_KEY = credentials.apiKey;
+      GOOGLE_CLIENT_ID = credentials.clientId;
+
+      await gapi.load('client', async () => {
+        try {
+          await gapi.client.init({
+            apiKey: GOOGLE_API_KEY,
+            discoveryDocs: [DISCOVERY_DOC]
+          });
+          
+          this.tokenClient = google.accounts.oauth2.initTokenClient({
+            client_id: GOOGLE_CLIENT_ID,
+            scope: SCOPES,
+            callback: (tokenResponse) => {
+              if (tokenResponse.access_token) {
+                this.onAuthSuccess();
+              }
+            }
+          });
+
+          this.initialized = true;
+          this.updateAuthStatus('signed-out', 'Ready to sign in');
+          return true;
+        } catch (error) {
+          console.error('Google API initialization failed:', error);
+          this.updateAuthStatus('signed-out', 'Setup error');
+          this.updateSaveStatus('error', 'API setup failed');
+          return false;
+        }
+      });
+    } catch (error) {
+      console.error('Google Drive Manager initialization failed:', error);
+      return false;
+    }
+  }
+
+  async signIn() {
+    if (!this.initialized) {
+      alert('Please complete setup first');
+      return false;
+    }
+
+    try {
+      if (gapi.client.getToken() === null) {
+        this.tokenClient.requestAccessToken({ prompt: 'consent' });
+      } else {
+        this.tokenClient.requestAccessToken({ prompt: '' });
+      }
+      return true;
+    } catch (error) {
+      console.error('Sign in failed:', error);
+      this.updateAuthStatus('signed-out', 'Sign in failed');
+      return false;
+    }
+  }
+
+  async signOut() {
+    const token = gapi.client.getToken();
+    if (token !== null) {
+      google.accounts.oauth2.revoke(token.access_token);
+      gapi.client.setToken('');
+    }
+    isAuthenticated = false;
+    this.updateAuthStatus('signed-out', 'Signed out');
+    this.updateSaveStatus('error', 'Not authenticated');
+    this.disableUI();
+  }
+
+  async onAuthSuccess() {
+    isAuthenticated = true;
+    this.updateAuthStatus('signed-in', 'Connected to Google Drive');
+    this.updateSaveStatus('saved', 'Ready to sync');
+    this.enableUI();
+    
+    // Load scenarios from Google Drive
+    await this.loadFromDrive();
+  }
+
+  async findOrCreateFile() {
+    try {
+      // Search for existing file
+      const response = await gapi.client.drive.files.list({
+        q: `name='${FILE_NAME}'`,
+        spaces: 'drive'
+      });
+
+      if (response.result.files && response.result.files.length > 0) {
+        gdriveFileId = response.result.files[0].id;
+        return gdriveFileId;
+      }
+
+      // Create new file
+      const createResponse = await gapi.client.drive.files.create({
+        resource: {
+          name: FILE_NAME,
+          parents: ['appDataFolder']
+        },
+        media: {
+          mimeType: 'application/json',
+          body: JSON.stringify({
+            scenarios: [],
+            version: '2.0',
+            created: new Date().toISOString()
+          })
+        }
+      });
+
+      gdriveFileId = createResponse.result.id;
+      return gdriveFileId;
+    } catch (error) {
+      console.error('Error finding/creating file:', error);
+      throw error;
+    }
+  }
+
+  async loadFromDrive() {
+    try {
+      this.updateSaveStatus('saving', 'Loading from Drive...');
+      
+      const fileId = await this.findOrCreateFile();
+      if (!fileId) {
+        throw new Error('Could not find or create file');
+      }
+
+      const response = await gapi.client.drive.files.get({
+        fileId: fileId,
+        alt: 'media'
+      });
+
+      const data = JSON.parse(response.body);
+      if (data.scenarios && Array.isArray(data.scenarios)) {
+        scenarios = data.scenarios;
+      } else {
+        scenarios = [];
+      }
+
+      this.updateSaveStatus('saved', 'Loaded from Drive');
+      renderTags();
+      render();
+      return true;
+    } catch (error) {
+      console.error('Load from Drive failed:', error);
+      this.updateSaveStatus('error', 'Load failed');
+      // Fallback to empty scenarios
+      scenarios = [];
+      renderTags();
+      render();
+      return false;
+    }
+  }
+
+  async saveToDrive() {
+    if (!isAuthenticated) {
+      this.updateSaveStatus('error', 'Not authenticated');
+      return false;
+    }
+
+    try {
+      this.updateSaveStatus('saving', 'Syncing to Drive...');
+
+      const fileId = await this.findOrCreateFile();
+      if (!fileId) {
+        throw new Error('Could not find or create file');
+      }
+
+      const dataToSave = {
+        scenarios: scenarios,
+        lastSave: Date.now(),
+        version: '2.0'
+      };
+
+      await gapi.client.request({
+        path: `https://www.googleapis.com/upload/drive/v3/files/${fileId}`,
+        method: 'PATCH',
+        params: {
+          uploadType: 'media'
+        },
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dataToSave)
+      });
+
+      this.updateSaveStatus('saved', 'Synced to Drive');
+      return true;
+    } catch (error) {
+      console.error('Save to Drive failed:', error);
+      this.updateSaveStatus('error', 'Sync failed');
+      return false;
+    }
+  }
+
+  async triggerSave() {
+    if (!isAuthenticated) return;
+    
+    if (saveTimeout) {
+      clearTimeout(saveTimeout);
+    }
+    
+    saveTimeout = setTimeout(async () => {
+      await this.saveToDrive();
+      saveTimeout = null;
+    }, 2000);
+  }
+
+  updateAuthStatus(status, message) {
+    const authEl = qs('#authStatus');
+    const textEl = qs('#authText');
+    authEl.className = `auth-status ${status}`;
+    textEl.textContent = message;
+    
+    const authBtn = qs('#authBtn');
+    if (status === 'signed-in') {
+      authBtn.textContent = 'Sign Out';
+      authBtn.onclick = () => this.signOut();
+    } else {
+      authBtn.textContent = 'Sign In';
+      authBtn.onclick = () => this.signIn();
+    }
+  }
+
+  updateSaveStatus(status, message) {
+    const statusEl = qs('#saveStatus');
+    const textEl = qs('#saveText');
+    statusEl.className = `save-status ${status}`;
+    textEl.textContent = message;
+  }
+
+  enableUI() {
+    ['#newBtn', '#exportBtn', '#searchInput', '#clearSearch', '#sortSel'].forEach(selector => {
+      const el = qs(selector);
+      if (el) el.disabled = false;
+    });
+  }
+
+  disableUI() {
+    ['#newBtn', '#exportBtn', '#searchInput', '#clearSearch', '#sortSel'].forEach(selector => {
+      const el = qs(selector);
+      if (el) el.disabled = true;
+    });
+  }
+}
+
+// Initialize Google Drive Manager
+const driveManager = new GoogleDriveManager();
+
+// Load saved theme
+const savedTheme = localStorage.getItem(THEME_KEY) || 'purple';
+document.documentElement.setAttribute('data-theme', savedTheme);
+
+// Theme-aware quotes (same as before)
+const themeQuotes = {
+  'purple': [
+    "Love is a battlefield, darling.",
+    "Some hearts are meant to be broken.",
+    "Sassy, classy, and a bit smart-assy.",
+    "You call it obsession, I call it destiny.",
+    "Dangerous is the new charming."
+  ],
+  'ocean': [
+    "Deep waters hide the most beautiful secrets.",
+    "I'm the calm before your storm.",
+    "Dive deep, but don't forget to breathe.",
+    "Some waves are meant to crash over you.",
+    "Lost at sea, found in your eyes."
+  ],
+  'sunset': [
+    "Golden hour hearts and amber dreams.",
+    "I burn bright, but only for you.",
+    "Sunsets are proof that endings can be beautiful.",
+    "I'm the fire that lights your darkest hours.",
+    "Warm like summer, wild like flame."
+  ]
+  // Add other themes as needed...
+};
+
+function getThemeQuote() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const quotes = themeQuotes[currentTheme] || themeQuotes['purple'];
+  return quotes[Math.floor(Math.random() * quotes.length)];
+}
+
+qs('#quoteOfDay').textContent = getThemeQuote();
+
+// Setup functions
+function openSetup() {
+  const credentials = JSON.parse(localStorage.getItem(CREDENTIALS_KEY) || '{}');
+  qs('#setupApiKey').value = credentials.apiKey || '';
+  qs('#setupClientId').value = credentials.clientId || '';
+  qs('#setupBg').style.display = 'flex';
+}
+
+function saveSetup() {
+  const apiKey = qs('#setupApiKey').value.trim();
+  const clientId = qs('#setupClientId').value.trim();
+  
+  if (!apiKey || !clientId) {
+    alert('Please enter both API Key and Client ID');
+    return;
+  }
+  
+  localStorage.setItem(CREDENTIALS_KEY, JSON.stringify({
+    apiKey: apiKey,
+    clientId: clientId
+  }));
+  
+  qs('#setupBg').style.display = 'none';
+  
+  // Reinitialize with new credentials
+  driveManager.initialize();
+}
+
+// Theme Functions
+function openThemeSelector() {
+  qs('#themeBg').style.display = 'flex';
+  updateThemeCards();
+}
+
+function updateThemeCards() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  qs('#themeBg').querySelectorAll('.theme-card').forEach(card => {
+    card.classList.toggle('active', card.dataset.theme === currentTheme);
+  });
+}
+
+function setTheme(themeName) {
+  document.documentElement.setAttribute('data-theme', themeName);
+  localStorage.setItem(THEME_KEY, themeName);
+  qs('#quoteOfDay').textContent = getThemeQuote();
+  updateThemeCards();
+}
+
+// Tags
+function renderTags() {
+  const tags = new Set();
+  scenarios.forEach(s => s.tags.forEach(t => tags.add(t.trim())));
+  const holder = qs('#tagList');
+  holder.innerHTML = '';
+  
+  Array.from(tags).sort().forEach(t => {
+    const b = document.createElement('button');
+    b.className = 'tag';
+    b.textContent = t;
+    if (activeTags.includes(t)) b.classList.add('active');
+    b.onclick = () => {
+      if (activeTags.includes(t)) activeTags = activeTags.filter(x => x !== t);
+      else activeTags.push(t);
+      render();
+      renderTags();
+    };
+    holder.appendChild(b);
+  });
+}
+
+// Render grid
+function render() {
+  const grid = qs('#grid');
+  grid.innerHTML = '';
+  const q = qs('#searchInput').value.toLowerCase();
+  const sort = qs('#sortSel').value;
+  let list = scenarios.slice();
+  
+  if (activeTags.length) list = list.filter(s => activeTags.every(tag => s.tags.includes(tag)));
+  if (q) list = list.filter(s => (s.title + s.pov + s.content).toLowerCase().includes(q));
+  
+  if (sort === 'newest') list.sort((a, b) => b.created - a.created);
+  if (sort === 'oldest') list.sort((a, b) => a.created - b.created);
+  if (sort === 'word_high') list.sort((a, b) => (b.content.split(/\s+/).length) - (a.content.split(/\s+/).length));
+  if (sort === 'word_low') list.sort((a, b) => (a.content.split(/\s+/).length) - (b.content.split(/\s+/).length));
+  
+  list.forEach(s => {
+    const c = document.createElement('div');
+    c.className = 'card';
+    c.innerHTML = `
+      <div class="meta">
+        <div>${new Date(s.created).toLocaleDateString()}</div>
+        <div>${s.pov}</div>
+      </div>
+      <div class="title">${s.title}</div>
+      <div class="excerpt">${s.content.slice(0, 160)}</div>
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="font-size:12px">${s.content.split(/\s+/).length} words</div>
+        <div>
+          <button class="btn" data-id="${s.id}">Edit</button>
+          <button class="btn" data-id="${s.id}">Read</button>
+          <button class="btn" data-id="${s.id}">Delete</button>
+        </div>
+      </div>
+    `;
+    
+    c.querySelectorAll('button')[0].onclick = () => openModal(s.id);
+    c.querySelectorAll('button')[1].onclick = () => openReading(s.id);
+    c.querySelectorAll('button')[2].onclick = () => {
+      if (confirm('Delete this scenario? This action cannot be undone.')) {
+        scenarios = scenarios.filter(x => x.id !== s.id);
+        driveManager.triggerSave();
+        renderTags();
+        render();
+      }
+    };
+    grid.appendChild(c);
+  });
+}
+
+// Modal functions
+function openModal(id) {
+  const s = scenarios.find(x => x.id === id);
+  if (!s) return;
+  currentScenario = s;
+  
+  qs('#modalTitle').textContent = s.title;
+  qs('#modalMeta').textContent = `${s.pov} • ${s.content.split(/\s+/).length} words • ${new Date(s.created).toLocaleString()}`;
+  qs('#editTitle').value = s.title;
+  qs('#editPOV').value = s.pov;
+  qs('#editTags').value = s.tags.join(',');
+  qs('#editContent').value = s.content;
+  qs('#wordCount').textContent = s.content.split(/\s+/).filter(x => x).length;
+  qs('#modalBg').style.display = 'flex';
+}
+
+function closeModal() {
+  qs('#modalBg').style.display = 'none';
+}
+
+function saveScenario() {
+  if (!currentScenario) return;
+  
+  currentScenario.title = qs('#editTitle').value;
+  currentScenario.pov = qs('#editPOV').value;
+  currentScenario.tags = qs('#editTags').value.split(',').map(x => x.trim()).filter(x => x);
+  currentScenario.content = qs('#editContent').value;
+  currentScenario.lastModified = Date.now();
+  
+  driveManager.triggerSave();
+  renderTags();
+  render();
+  closeModal();
+}
+
+// Reading mode functions
+function paginateContent(content) {
+  const readingBox = qs('#readingBox');
+  const maxHeight = readingBox.clientHeight || 600;
+  
+  const paragraphs = content.split('\n').filter(p => p.trim());
+  readingPages = [];
+  
+  const tempDiv = document.createElement('div');
+  tempDiv.style.cssText = `
+    position: absolute;
+    visibility: hidden;
+    width: ${readingBox.clientWidth || 900}px;
+    max-width: 900px;
+    font-size: 16px;
+    line-height: 1.8;
+    font-family: 'Playfair Display';
+    columns: 2;
+    column-gap: 2rem;
+    text-align: justify;
+    padding: 0;
+    margin: 0;
+  `;
+  document.body.appendChild(tempDiv);
+  
+  let currentPageContent = [];
+  
+  for (let i = 0; i < paragraphs.length; i++) {
+    const testContent = [...currentPageContent, paragraphs[i]];
+    tempDiv.innerHTML = testContent.map(p => `<p>${p}</p>`).join('');
+    
+    if (tempDiv.scrollHeight > maxHeight && currentPageContent.length > 0) {
+      readingPages.push(currentPageContent.map(p => `<p>${p}</p>`).join(''));
+      currentPageContent = [paragraphs[i]];
+    } else {
+      currentPageContent.push(paragraphs[i]);
+    }
+  }
+  
+  if (currentPageContent.length > 0) {
+    readingPages.push(currentPageContent.map(p => `<p>${p}</p>`).join(''));
+  }
+  
+  document.body.removeChild(tempDiv);
+  
+  if (readingPages.length === 0) {
+    readingPages = [`<p>${content || 'No content available'}</p>`];
+  }
+}
+
+function renderPage() {
+  if (!readingPages.length) return;
+  qs('#readingBox').innerHTML = readingPages[currentPage];
+  qs('#pageCounter').textContent = `Page ${currentPage + 1} / ${readingPages.length}`;
+}
+
+function openReading(id) {
+  const s = scenarios.find(x => x.id === id);
+  if (!s) return;
+  currentScenario = s;
+  
+  qs('#readingBg').style.display = 'flex';
+  
+  setTimeout(() => {
+    paginateContent(s.content);
+    currentPage = 0;
+    renderPage();
+  }, 50);
+}
+
+// Event Listeners
+qs('#setupBtn').onclick = openSetup;
+qs('#saveSetup').onclick = saveSetup;
+qs('#closeSetup').onclick = () => qs('#setupBg').style.display = 'none';
+
+qs('#themeBtn').onclick = openThemeSelector;
+qs('#closeTheme').onclick = () => qs('#themeBg').style.display = 'none';
+
+qs('#newBtn').onclick = () => {
+  const s = {
+    id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+    title: "Untitled Scenario",
+    pov: "Character — POV",
+    tags: [],
+    content: "",
+    created: Date.now(),
+    lastModified: Date.now()
+  };
+  scenarios.push(s);
+  driveManager.triggerSave();
+  renderTags();
+  render();
+  openModal(s.id);
+};
+
+qs('#saveBtn').onclick = saveScenario;
+qs('#closeModal').onclick = closeModal;
+qs('#deleteBtn').onclick = () => {
+  if (currentScenario) {
+    if (confirm('Delete this scenario? This action cannot be undone.')) {
+      scenarios = scenarios.filter(x => x.id !== currentScenario.id);
+      driveManager.triggerSave();
+      renderTags();
+      render();
+      closeModal();
+    }
+  }
+};
+qs('#readBtn').onclick = () => {
+  if (currentScenario) openReading(currentScenario.id);
+};
+
+// Auto-save on content changes
+qs('#editContent').addEventListener('input', e => {
+  qs('#wordCount').textContent = e.target.value.split(/\s+/).filter(x => x).length;
+  if (currentScenario && isAuthenticated) {
+    driveManager.triggerSave();
+  }
+});
+
+['#editTitle', '#editPOV', '#editTags'].forEach(selector => {
+  qs(selector).addEventListener('input', () => {
+    if (currentScenario && isAuthenticated) {
+      driveManager.triggerSave();
+    }
+  });
+});
+
+qs('#searchInput').oninput = render;
+qs('#clearSearch').onclick = () => {
+  qs('#searchInput').value = '';
+  render();
+};
+qs('#sortSel').onchange = render;
+
+qs('#exportBtn').onclick = () => {
+  const exportData = {
+    scenarios: scenarios,
+    exportDate: new Date().toISOString(),
+    version: '2.0'
+  };
+  const jsonString = JSON.stringify(exportData, null, 2);
+  const blob = new Blob([jsonString], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
+  a.href = url;
+  a.download = `ellie-scenarios-${timestamp}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+};
+
+qs('#importBtn').onclick = () => qs('#importFile').click();
+qs('#importFile').onchange = e => {
+  const file = e.target.files[0];
+  if (!file) return;
+  
+  const reader = new FileReader();
+  reader.onload = function(evt) {
+    try {
+      const data = JSON.parse(evt.target.result);
+      let importedScenarios = [];
+      
+      if (data.scenarios && Array.isArray(data.scenarios)) {
+        importedScenarios = data.scenarios;
+      } else if (Array.isArray(data)) {
+        importedScenarios = data;
+      } else {
+        throw new Error('Invalid file format');
+      }
+      
+      if (importedScenarios.length === 0) {
+        throw new Error('No scenarios found in file');
+      }
+      
+      const action = confirm(
+        `Found ${importedScenarios.length} scenarios in file.\n\n` +
+        'Click OK to ADD these scenarios to your existing ones.\n' +
+        'Click Cancel to REPLACE all your current scenarios with these.'
+      );
+      
+      if (action) {
+        const existingIds = new Set(scenarios.map(s => s.id));
+        importedScenarios.forEach(s => {
+          if (existingIds.has(s.id)) {
+            s.id = Date.now().toString() + Math.random().toString(36).substr(2, 9);
+          }
+          scenarios.push(s);
+        });
+      } else {
+        scenarios = importedScenarios;
+      }
+      
+      driveManager.triggerSave();
+      renderTags();
+      render();
+      
+    } catch (error) {
+      console.error('Import failed:', error);
+      alert('Import failed: ' + error.message);
+    }
+  };
+  reader.readAsText(file);
+  e.target.value = '';
+};
+
+// Reading mode navigation
+qs('#nextArrow').onclick = () => {
+  if (currentPage < readingPages.length - 1) {
+    currentPage++;
+    renderPage();
+  }
+};
+qs('#prevArrow').onclick = () => {
+  if (currentPage > 0) {
+    currentPage--;
+    renderPage();
+  }
+};
+qs('#exitReading').onclick = () => {
+  qs('#readingBg').style.display = 'none';
+};
+
+// Theme card setup
+function setupThemeCardListeners() {
+  qs('#themeBg').querySelectorAll('.theme-card').forEach(card => {
+    card.onclick = () => setTheme(card.dataset.theme);
+  });
+}
+
+// Keyboard support for reading
+document.addEventListener('keydown', e => {
+  if (qs('#readingBg').style.display === 'flex') {
+    if (e.key === 'ArrowRight' && currentPage < readingPages.length - 1) {
+      currentPage++;
+      renderPage();
+    }
+    if (e.key === 'ArrowLeft' && currentPage > 0) {
+      currentPage--;
+      renderPage();
+    }
+    if (e.key === 'Escape') {
+      qs('#readingBg').style.display = 'none';
+    }
+  }
+});
+
+// Initialize app
+async function initializeApp() {
+  // Show loading
+  qs('#loadingOverlay').style.display = 'flex';
+  
+  // Initialize Google Drive
+  await driveManager.initialize();
+  
+  // Hide loading
+  qs('#loadingOverlay').style.display = 'none';
+  
+  // Setup theme listeners
+  setupThemeCardListeners();
+  
+  // Initial render (empty until authenticated)
+  renderTags();
+  render();
+}
+
+// Wait for Google APIs to load
+window.onload = initializeApp;
+
+</script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+</body>
+</html>
